@@ -1,33 +1,61 @@
-import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
-const api = axios.create({
-  baseURL: "http://localhost:8080", // change if your backend is deployed
-});
+/**
+ * Generic API function to mimic Axios instance
+ */
+async function api(
+  endpoint: string,
+  options: RequestInit = {}
+): Promise<any> {
+  const token = localStorage.getItem("jwt");
 
-// Attach token for every request
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem("jwt");
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
+  // Use Record<string, string> for safe TypeScript headers
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+    ...(options.headers as Record<string, string> || {}),
+  };
 
-// Logout if token expired (backend returns 401)
-api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response && error.response.status === 401) {
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+
+  try {
+    const response = await fetch(`${API_URL}${endpoint}`, {
+      ...options,
+      headers,
+    });
+
+    // Logout if token expired (401)
+    if (response.status === 401) {
       alert("Session expired. Please login again.");
-      localStorage.removeItem("jwt"); // remove expired token
-      window.location.href = "/login"; // redirect to login
+      localStorage.removeItem("jwt");
+      window.location.href = "/login";
+      throw new Error("Unauthorized");
     }
+
+    if (!response.ok) {
+      throw new Error(`Error ${response.status}: ${response.statusText}`);
+    }
+
+    return await response.json();
+  } catch (error) {
     return Promise.reject(error);
   }
-);
+}
 
+/**
+ * Helper methods to mimic Axios instance
+ */
+api.get = (endpoint: string, options: RequestInit = {}) =>
+  api(endpoint, { ...options, method: "GET" });
+
+api.post = (endpoint: string, body?: any, options: RequestInit = {}) =>
+  api(endpoint, { ...options, method: "POST", body: JSON.stringify(body) });
+
+api.put = (endpoint: string, body?: any, options: RequestInit = {}) =>
+  api(endpoint, { ...options, method: "PUT", body: JSON.stringify(body) });
+
+api.delete = (endpoint: string, options: RequestInit = {}) =>
+  api(endpoint, { ...options, method: "DELETE" });
 
 export default api;
