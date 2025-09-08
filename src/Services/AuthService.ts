@@ -1,5 +1,5 @@
 // src/services/authService.ts
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 //signup
 
 export interface SignupRequest {
@@ -11,7 +11,7 @@ export interface SignupRequest {
 }
 
 export async function signupApi(data: SignupRequest) {
-  const response = await fetch("http://localhost:8080/public/signup", {
+  const response = await fetch(`${backendUrl}/public/signup`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
@@ -29,10 +29,10 @@ export async function signupApi(data: SignupRequest) {
 
 //login
 
-const API_BASE = "http://localhost:8080/public";
+
 
 export async function loginUser(username: string, password: string) {
-    const response = await fetch(`${API_BASE}/login`, {
+    const response = await fetch(`${backendUrl}/public/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userName: username, password }),
@@ -42,7 +42,7 @@ export async function loginUser(username: string, password: string) {
 }
 
 export async function verifyEmail(email: string, code: string) {
-    const response = await fetch(`${API_BASE}/verify`, {
+    const response = await fetch(`${backendUrl}/public/verify`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, code }),
@@ -52,7 +52,7 @@ export async function verifyEmail(email: string, code: string) {
 }
 
 export async function sendVerificationCode(email: string) {
-  const response = await fetch(`${API_BASE}/send-code`, {
+  const response = await fetch(`${backendUrl}/public/send-code`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email }),

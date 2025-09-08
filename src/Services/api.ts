@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 const api = axios.create({
-  baseURL: "http://localhost:8080", // change if your backend is deployed
+  baseURL:backendUrl, // change if your backend is deployed
 });
 
 // Attach token for every request
