@@ -7,6 +7,7 @@ const GoogleAuthPage: React.FC = () => {
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       if (event.data?.token) {
+        console.log("nothing received")
         localStorage.setItem("jwt", event.data.token);
         navigate("/home");
       }
