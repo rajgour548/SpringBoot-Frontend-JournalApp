@@ -7,7 +7,6 @@ const GoogleAuthPage: React.FC = () => {
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       if (event.data?.token) {
-        console.log("Received JWT from Google:", event.data.token);
         localStorage.setItem("jwt", event.data.token);
         navigate("/home");
       }
