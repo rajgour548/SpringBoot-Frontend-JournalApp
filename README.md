@@ -19,6 +19,14 @@ It connects with the backend (Spring Boot, deployed on Railway) to provide user 
 - Backend: [Railway Deployment](https://your-backend.up.railway.app)
 - Frontend: [Vercel Deployment](https://your-frontend.vercel.app)
 
+## 📖 API Documentation
+
+This backend includes interactive API docs powered by **Swagger UI**.
+
+👉 [View Live Swagger UI](https://springboot-journalapp-production.up.railway.app/swagger-ui/index.html)
+
+Use this to explore available endpoints, test APIs, and understand request/response formats.
+
 ## 📦 Setup Locally
 ```bash
 # clone repo
@@ -32,10 +40,4 @@ npm install
 # start development server
 npm run dev
 
-## 📖 API Documentation
 
-This backend includes interactive API docs powered by **Swagger UI**.
-
-👉 [View Live Swagger UI](https://springboot-journalapp-production.up.railway.app/swagger-ui/index.html)
-
-Use this to explore available endpoints, test APIs, and understand request/response formats.
