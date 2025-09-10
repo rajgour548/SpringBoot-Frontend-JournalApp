@@ -31,3 +31,11 @@ npm install
 
 # start development server
 npm run dev
+
+## 📖 API Documentation
+
+This backend includes interactive API docs powered by **Swagger UI**.
+
+👉 [View Live Swagger UI](https://springboot-journalapp-production.up.railway.app/swagger-ui/index.html)
+
+Use this to explore available endpoints, test APIs, and understand request/response formats.
