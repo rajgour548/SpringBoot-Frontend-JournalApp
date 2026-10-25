@@ -21,7 +21,6 @@ import {
   LoginRounded,
   ArrowBackRounded,
   AutoAwesomeRounded,
-  VisibilityRounded,
 } from "@mui/icons-material";
 
 import {

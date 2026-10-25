@@ -434,7 +434,9 @@ export default function JournalPage() {
                           letterSpacing: "0.01em",
                         }}
                       >
-                        {new Date(entry.date).toLocaleDateString()}
+                      {entry.date
+                        ? new Date(entry.date).toLocaleDateString()
+                        : "Date unavailable"}
                       </Typography>
                     </Stack>
 

@@ -14,7 +14,6 @@ import {
 } from "@mui/material";
 
 import {
-  PersonRounded,
   SettingsRounded,
   LogoutRounded,
 } from "@mui/icons-material";
