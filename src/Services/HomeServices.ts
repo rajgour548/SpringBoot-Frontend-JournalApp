@@ -3,10 +3,6 @@ import api from "../Services/api";
 export interface HomeData {
   actualName: string;
   email:string;
-  userName :string;
-  greeting: string;
-  weatherDescriptions: string[];
-  feelsLike: number;
 }
 
 export async function fetchHomeData(): Promise<HomeData> {

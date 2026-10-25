@@ -3,14 +3,13 @@ import api from "../Services/api";
 
 
 
-export type Sentiment = "POSITIVE" | "NEUTRAL" | "NEGATIVE";
-
 export interface JournalEntry {
   id: string;
   title: string;
   content: string;
-  date: string;
-  sentiment: Sentiment;
+  date: string | null;
+  sentiment: "POSITIVE" | "NEUTRAL" | "NEGATIVE" | null;
+  emotions: string[] | null;
 }
 
 
@@ -27,7 +26,7 @@ export const getJournals = async (): Promise<JournalEntry[]> => {
 };
 
 export const createJournal = async (
-  entry: Omit<JournalEntry, "id" | "date">
+  entry: Pick<JournalEntry, "title" | "content">
 ) => {
   try{
   const res = await api.post("/journal", entry);

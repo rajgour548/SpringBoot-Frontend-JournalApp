@@ -1,8 +1,11 @@
-// src/components/GoogleLoginButton.tsx
+
 import React from "react";
-import {Box, Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { FcGoogle } from "react-icons/fc";
-import { buildGoogleAuthUrl, openGooglePopup } from "../Services/googleAuthService";
+import {
+  buildGoogleAuthUrl,
+  openGooglePopup,
+} from "../Services/googleAuthService";
 
 const GoogleLoginButton: React.FC = () => {
   const handleLogin = () => {
@@ -10,25 +13,40 @@ const GoogleLoginButton: React.FC = () => {
     openGooglePopup(googleUrl);
   };
 
-    return (
+  return (
     <Box sx={{ mt: 2, width: "100%" }}>
       <Button
         onClick={handleLogin}
-        startIcon={<FcGoogle size={24} />}
+        startIcon={<FcGoogle size={22} />}
         variant="outlined"
         fullWidth
         sx={{
-          py: { xs: 1, sm: 1.3 },
-          fontSize: { xs: "0.85rem", sm: "1rem" },
-          borderRadius: 2,
-          fontWeight: "bold",
+          py: { xs: 1.15, sm: 1.35 },
+          px: 2,
+          fontSize: { xs: "0.9rem", sm: "0.98rem" },
+          borderRadius: "14px",
+          fontWeight: 700,
           textTransform: "none",
-          bgcolor: "#fff",
-          color: "#000",
-          borderColor: "#ddd",
+          color: "text.primary",
+          bgcolor: (theme) =>
+            theme.palette.mode === "light"
+              ? "rgba(255, 255, 255, 0.8)"
+              : "rgba(255, 255, 255, 0.04)",
+          borderColor: (theme) =>
+            theme.palette.mode === "light"
+              ? "rgba(141, 122, 184, 0.25)"
+              : "rgba(255, 255, 255, 0.16)",
+          transition: "all 0.2s ease",
           "&:hover": {
-            bgcolor: "#f7f7f7",
-            borderColor: "#ccc",
+            bgcolor: (theme) =>
+              theme.palette.mode === "light"
+                ? "rgba(234, 226, 247, 0.35)"
+                : "rgba(141, 122, 184, 0.12)",
+            borderColor: "#8D7AB8",
+            boxShadow: "0 5px 16px rgba(141, 122, 184, 0.12)",
+          },
+          "&:active": {
+            transform: "scale(0.99)",
           },
         }}
       >
@@ -36,7 +54,6 @@ const GoogleLoginButton: React.FC = () => {
       </Button>
     </Box>
   );
-
 };
 
 export default GoogleLoginButton;
