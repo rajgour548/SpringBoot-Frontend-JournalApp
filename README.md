@@ -23,7 +23,7 @@ It connects with the backend (Spring Boot, deployed on Railway) to provide user 
 
 This backend includes interactive API docs powered by **Swagger UI**.
 
-👉 [View Live Swagger UI](https://springboot-journalapp-production.up.railway.app/swagger-ui/index.html)
+**Swagger UI** ➜ [API,s Documentation](https://springboot-journalapp.journal-app.blitz.cloud/swagger-ui/index.html)
 
 Use this to explore available endpoints, test APIs, and understand request/response formats.
 
