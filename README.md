@@ -16,7 +16,7 @@ It connects with the backend (Spring Boot, deployed on Railway) to provide user 
 - **Deployment**: Vercel (frontend), Railway (backend)
 
 ## 🌐 Deployment
-- Backend: [Railway Deployment](https://your-backend.up.railway.app)
+- Backend: [blitz.cloud Deployment](https://springboot-journalapp.journal-app.blitz.cloud/)
 - Frontend: [Vercel Deployment](https://your-frontend.vercel.app)
 
 ## 📖 API Documentation
