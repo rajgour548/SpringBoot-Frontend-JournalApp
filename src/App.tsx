@@ -129,6 +129,27 @@ function App() {
           </Typography>
         </Box>
 
+
+{/* Free-tier backend notice */}
+<Alert
+  severity="info"
+  sx={{
+    mb: 3,
+    borderRadius: 2,
+    alignItems: "center",
+    "& .MuiAlert-message": {
+      fontSize: { xs: "0.8rem", sm: "0.875rem" },
+      lineHeight: 1.6,
+    },
+  }}
+>
+  <strong>Demo hosting notice:</strong> This app runs on a free hosting
+  plan. After a period of inactivity, the backend may go to sleep,
+  so your first request might take a little longer while it wakes up.
+  Thanks for your patience!
+</Alert>
+
+
         {/* Authentication card */}
         <Card
           elevation={0}
